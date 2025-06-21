@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Site Responsivo Completo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link name="theme-color" content="#2193b0" />
+</head>
+<body>
+
+<header>
+  <h1>Site Responsivo Completo</h1>
+</header>
+
+<!-- Mapa Google -->
+<section id="mapa">
+  <h2>Como chegar</h2>
+  <div class="mapa-container">
+          <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.658536386045!2d-46.65360158501903!3d-23.561414384677702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c973c1a7a1%3A0x1d36418e8ec62b14!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1719010000000"
+      width="100%" 
+      height="300" 
+      class="mapa-iframe"
+      allowfullscreen="" 
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mapa de localização da Av. Paulista, 1000, São Paulo">
+    </iframe>
+  </div>
+</section>
+
+<!-- Calendário -->
+<section id="calendario">
+  <h2>Agendamentos Disponíveis</h2>
+  <div class="calendar">
+    <div id="calendar-container"></div>
+    <p class="legenda">*Datas em verde estão disponíveis</p>
+  </div>
+</section>
+
+<!-- Galeria com Lightbox -->
+<section id="galeria">
+  <h2>Galeria de Projetos</h2>
+  <div class="galeria-container">
+    <img src="https://via.placeholder.com/300x200?text=Foto+1" alt="Foto 1" class="foto" />
+    <img src="https://via.placeholder.com/300x200?text=Foto+2" alt="Foto 2" class="foto" />
+    <img src="https://via.placeholder.com/300x200?text=Foto+3" alt="Foto 3" class="foto" />
+    <img src="https://via.placeholder.com/300x200?text=Foto+4" alt="Foto 4" class="foto" />
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="fechar">&times;</span>
+    <img class="lightbox-img" src="" alt="Imagem ampliada" />
+  </div>
+</section>
+
+<!-- Produtos e Carrinho -->
+<section id="produtos">
+  <h2>Nossos Produtos</h2>
+  <div class="produtos-container">
+    <div class="produto">
+      <img src="https://via.placeholder.com/200x150?text=Produto+1" alt="Produto 1" />
+      <p>Produto 1 - R$ 25,00</p>
+      <button onclick="adicionarCarrinho('Produto 1', 25)">Adicionar</button>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/200x150?text=Produto+2" alt="Produto 2" />
+      <p>Produto 2 - R$ 40,00</p>
+      <button onclick="adicionarCarrinho('Produto 2', 40)">Adicionar</button>
+    </div>
+    <div class="produto">
+      <img src="https://via.placeholder.com/200x150?text=Produto+3" alt="Produto 3" />
+      <p>Produto 3 - R$ 60,00</p>
+      <button onclick="adicionarCarrinho('Produto 3', 60)">Adicionar</button>
+    </div>
+  </div>
+
+  <div class="carrinho">
+    <h3>Carrinho</h3>
+    <ul id="itens-carrinho"></ul>
+    <p><strong>Total:</strong> R$ <span id="total">0.00</span></p>
+  </div>
+</section>
+
+<!-- Login / Cadastro -->
+<section id="auth">
+  <h2>Login / Cadastro</h2>
+  <div id="form-login">
+    <input type="text" id="login-email" placeholder="E-mail" required />
+    <input type="password" id="login-senha" placeholder="Senha" required />
+    <button onclick="fazerLogin()">Entrar</button>
+    <p>Não tem conta? <a href="#" onclick="mostrarCadastro()">Cadastre-se</a></p>
+  </div>
+
+  <div id="form-cadastro" class="hidden">
+    <input type="text" id="cadastro-nome" placeholder="Nome completo" required />
+    <input type="email" id="cadastro-email" placeholder="E-mail" required />
+    <input type="password" id="cadastro-senha" placeholder="Senha" required />
+    <button onclick="fazerCadastro()">Cadastrar</button>
+    <p>Já tem conta? <a href="#" onclick="mostrarLogin()">Fazer login</a></p>
+  </div>
+
+  <div id="bemvindo" class="hidden">
+    <p>Olá, <span id="usuario-nome"></span>!</p>
+    <button onclick="fazerLogout()">Sair</button>
+  </div>
+</section>
+
+<!-- Painel Administrativo -->
+<section id="painel-admin">
+  <h2>Painel Administrativo</h2>
+  <div class="abas">
+    <button class="aba-btn active" onclick="mostrarAba('mensagens')">Mensagens</button>
+    <button class="aba-btn" onclick="mostrarAba('pedidos')">Pedidos</button>
+    <button class="aba-btn" onclick="mostrarAba('usuarios')">Usuários</button>
+  </div>
+
+  <div id="mensagens" class="conteudo-aba">
+    <h3>Mensagens do Contato</h3>
+    <ul id="lista-mensagens"></ul>
+  </div>
+
+  <div id="pedidos" class="conteudo-aba hidden">
+    <h3>Pedidos</h3>
+    <ul id="lista-pedidos"></ul>
+  </div>
+
+  <div id="usuarios" class="conteudo-aba hidden">
+    <h3>Usuários Cadastrados</h3>
+    <ul id="lista-usuarios"></ul>
+  </div>
+</section>
+
+<!-- Chat suporte -->
+<div id="chat-suporte">
+  <div id="chat-header">Suporte 💬 <span id="chat-fechar" title="Fechar">×</span></div>
+  <div id="chat-mensagens"></div>
+  <input type="text" id="chat-input" placeholder="Digite sua mensagem..." />
+  <button id="chat-enviar">Enviar</button>
+</div>
+<div id="chat-abrir" title="Abrir chat">💬</div>
+
+<footer>
+  <p>© 2025 Site Responsivo Completo</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
